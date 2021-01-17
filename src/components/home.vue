@@ -36,13 +36,13 @@
     }
 
     #side {
-        background-color: yellow;
+        background-color: white;
         height: 91%;
         position: absolute;
     }
 
     #content {
-        background-color: green;
+        background-color: white;
         height: 91%;
         width: 86%;
         left: 14%;

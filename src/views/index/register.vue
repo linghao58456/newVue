@@ -28,7 +28,7 @@
                          v-decorator="['code',{rules:[{required:true,message:'请输入验证码'},{validator:confirmCode}]}]">
                     <my-icon slot="prefix" type="icon-yanzhengma" class="icon"/>
                 </a-input>
-                <div @click="refreshCode" style="margin-left: 210px;margin-top: -40px;width: 120px">
+                <div @click="refreshCode" style="margin-left: 210px;margin-top: -40px;width: 120px;margin-right: 220px">
                     <verification-code :identifyCode="identifyCode" style="cursor: pointer"/>
                 </div>
             </a-form-item>
@@ -112,7 +112,7 @@
 <style scoped>
     #register {
         margin-top: 120px;
-        margin-left: 450px;
+        margin-left: 500px;
         padding-top: 20px;
         height: 350px;
         width: 420px;

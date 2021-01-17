@@ -27,12 +27,12 @@
                          v-decorator="['code',{rules:[{required:true,message:'请输入验证码'},{validator:confirmCode}]}]">
                     <my-icon slot="prefix" type="icon-yanzhengma" class="icon"/>
                 </a-input>
-                <div @click="refreshCode" style="margin-left: 210px;margin-top: -40px">
+                <div @click="refreshCode" style="margin-left: 210px;margin-top: -40px;margin-right: 220px">
                     <verification-code :identifyCode="identifyCode" style="cursor: pointer"/>
                 </div>
             </a-form-item>
             <a-button type="primary" class="btn" style="margin-left: 100px">
-                <router-link :to="{name:'forget'}">返回</router-link>
+                <router-link :to="{name:'login'}">返回</router-link>
             </a-button>
             <a-button type="primary" class="btn" @click="reset">重置密码</a-button>
         </a-form>

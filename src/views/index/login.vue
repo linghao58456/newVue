@@ -65,7 +65,7 @@
         width: 400px;
         height: 240px;
         border-radius: 25px;
-        margin-left: 450px;
+        margin-left: 500px;
         margin-top: 120px;
     }
 

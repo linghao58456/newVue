@@ -48,7 +48,7 @@
 <style scoped>
     #forget {
         margin-top: 120px;
-        margin-left: 450px;
+        margin-left: 500px;
         padding-top: 20px;
         height: 250px;
         width: 400px;

@@ -29,11 +29,9 @@
                 menu_list: [
                     {
                         key: "sub1", icon: "icon-peizhi", name: "配置中心", menu_item: [{
-                            key: "/system/list", icon: "icon-xitongpeizhi", name: "系统配置",
-                            path: {name: "systemList"}
+                            key: "/project/list", icon: "icon-xitongpeizhi", name: "项目配置", path: {name: "projectList"}
                         }, {
-                            key: "/databaseConfig/list", icon: "icon-data", name: "数据库配置",
-                            path: {name: "databaseConfigList"}
+                            key: "/database/list", icon: "icon-xitongpeizhi", name: "数据库", path: {name: "databaseList"}
                         }, {
                             key: "/environmentConfig/list", icon: "icon-shujutansuohuanjingpeizhi", name: "环境配置",
                             path: {name: "environmentConfigList"}
@@ -85,6 +83,9 @@
         created() {
             this.getMenuList()
         },
+        mounted() {
+            this.refresh()
+        },
         methods: {
             // 展开当前菜单
             openChange(openKeys) {
@@ -102,6 +103,10 @@
             goto(value) {
                 this.$router.push(value)
             },
+            // 刷新页面获取当前
+            refresh() {
+
+            }
         }
     }
 </script>

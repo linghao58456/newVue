@@ -7,7 +7,9 @@ import forget from "../views/index/forget";
 import reset from "../views/index/reset";
 import home from "../components/home";
 import change from "../views/home/change";
-import systemList from "../views/config/system/list"
+import projectList from "../views/config/project/projectList";
+import dataList from "../views/config/daba/dataList";
+import addProject from "../views/config/project/addProject";
 
 Vue.use(VueRouter)
 
@@ -41,9 +43,17 @@ const routes = [{
         name: "changePwd",
         component: change
     }, {
-        path: "/system/list",
-        name: "systemList",
-        component: systemList
+        path: "/project/list",
+        name: "projectList",
+        component: projectList
+    }, {
+        path: "/project/add",
+        name: "addProject",
+        component: addProject
+    }, {
+        path: "/database/list",
+        name: "databaseList",
+        component: dataList
     }]
 }]
 

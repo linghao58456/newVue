@@ -125,12 +125,12 @@
 <style>
     .edit-form-item .ant-form-explain {
         margin-bottom: -20px;
-        margin-left: 345px;
+        margin-left: 450px;
     }
 
     .new-code-form-item .ant-form-explain {
         margin-top: -30px;
         z-index: 50;
-        margin-left: 345px;
+        margin-left: 450px;
     }
 </style>
