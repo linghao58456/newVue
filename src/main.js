@@ -110,6 +110,7 @@ Vue.prototype.getDate = function (date) {
     return Moment.utc(date).format("YYYY-MM-DD HH:ss:mm")
 }
 
+
 // 自定义icon
 Vue.component("myIcon", Icon.createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_1966076_g622hcbqokl.js',
