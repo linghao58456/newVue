@@ -8,7 +8,7 @@ import reset from "../views/index/reset";
 import home from "../components/home";
 import change from "../views/home/change";
 import projectList from "../views/config/project/projectList";
-import dataList from "../views/config/daba/dataList";
+import dataList from "../views/config/data/dataList";
 import addProject from "../views/config/project/addProject";
 
 Vue.use(VueRouter)

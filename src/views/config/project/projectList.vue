@@ -31,8 +31,16 @@
                 </a-form>
             </a-layout-header>
             <a-layout-content>
-                <a-table :columns="columns" :data-source="project_list" bordered>
-
+                <a-table :columns="columns" :data-source="project_list" :pagination="false" bordered>
+                    <span slot="action" slot-scope="text,record">
+                        <my-icon @click="edit(record.id)" type="icon-edit" class="icon_btn" style="color: green"/>
+                        <a-switch size="small" style="margin-top: -10px;margin-right: 10px" :checked="check"
+                                  @change="dis_enable(record.id)"/>
+                        <a-popconfirm placement="topRight" :title="`确认删除项目名称:${record.project_name}`" ok-text="确认"
+                                      cancel-text="取消" @confirm="confirm(record.id)" @cancel="cancel">
+                            <my-icon @click="del(record.id)" type="icon-delete1" class="icon_btn" style="color: red"/>
+                        </a-popconfirm>
+                    </span>
                 </a-table>
             </a-layout-content>
         </a-layout>
@@ -57,9 +65,9 @@
         name: "projectList",
         data() {
             return {
-                project_name: "", project_address: "", project_manager: [{name: "全部", value: 0}],
+                project_name: "", project_address: "", project_manager: [{name: "全部", value: 0}], check: true,
                 project_status: [{name: "全部", value: 0}, {name: "开启", value: 1}, {name: "关闭", value: 2}],
-                project_list: [], columns,
+                project_list: [], columns, currentPage: 0, pageSize: 10
             }
         },
         created() {
@@ -73,27 +81,25 @@
             },
             // 查询项目
             searchProject() {
-                this.Get("/projectList", {currentPage: 0, pageSize: 10}).then(res => {
-                    let status = ""
-                    let manager = ""
-                    let create = ""
-                    let modify = ""
-                    res['code'] === 1000 ? res['data'].map(item => {
-                        item['status'] === 0 ? status = "开启" : status = "关闭"
-                        this.project_manager.map(name => {
-                            item['project_manager'] === name.value ? manager = name.name : ""
-                            item['createId'] === name.value ? create = name.name : ""
-                            item['modifyId'] === name.value ? modify = name.name : ""
-                        })
-                        this.project_list.push({
-                            id: item['project_id'], project_name: item['project_name'],
-                            project_address: item['project_address'], project_manager: manager,
-                            project_status: status, project_created: create, project_modify: modify,
-                            project_create_time: this.getDate(item['create_time']),
-                            project_modify_time: this.getDate(item['modify_time'])
-                        })
-                    }) : this.message.error(res['message'], 2)
-                })
+                this.Get("/projectList", {currentPage: this.currentPage, pageSize: this.pageSize})
+                    .then(res => {
+                        let status, manager, create, modify = ""
+                        res['code'] === 1000 ? res['data'].map(item => {
+                            item['status'] === 0 ? status = "开启" : status = "关闭"
+                            this.project_manager.map(name => {
+                                item['project_manager'] === name.value ? manager = name.name : ""
+                                item['createId'] === name.value ? create = name.name : ""
+                                item['modifyId'] === name.value ? modify = name.name : ""
+                            })
+                            this.project_list.push({
+                                id: item['project_id'], project_name: item['project_name'],
+                                project_address: item['project_address'], project_manager: manager,
+                                project_status: status, project_created: create, project_modify: modify,
+                                project_create_time: this.getDate(item['create_time']),
+                                project_modify_time: this.getDate(item['modify_time'])
+                            })
+                        }) : this.message.error(res['message'], 2)
+                    })
             },
             // 或者项目负责人
             searchProjectManager() {
@@ -103,7 +109,27 @@
                     }) : this.message.error(res['message'], 2)
                 })
             },
-
+            // 编辑
+            edit(value) {
+                console.log(value)
+            },
+            // 关闭/开启
+            dis_enable(value) {
+                console.log(value)
+                this.check = !this.check
+            },
+            // 删除
+            del(value) {
+                console.log(value)
+            },
+            // 确认删除
+            confirm(value) {
+                console.log(value)
+            },
+            // 取消删除
+            cancel() {
+                console.log("取消删除")
+            }
         }
     }
 </script>
